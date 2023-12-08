@@ -1,0 +1,89 @@
+{% load static %}
+{% load render_partial %}
+
+
+<!doctype html>
+<html lang="fa">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>{% block title %}وبلاگ جنگویی{% endblock %}</title>
+    <meta name="keywords"
+          content="{% block keywords %}HTML5,CSS3,HTML,Template,multi-page,Strax - IT & SaaS Startups HTML Template{% endblock %}"/>
+    <meta name="description"
+          content="{% block description %}Strax - IT & SaaS Startups HTML Template{% endblock %}">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="author" content="Barat Hadian">
+
+
+    {% include 'main/shared/_HeaderReferences.html' %}
+
+    {% block page_header_ref %}
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+
+    {% block header %}
+        {% render_partial 'header' %}
+    {% endblock %}
+
+
+
+    <main id="content" role="main">
+        {% block content %}{% endblock %}
+    </main>
+
+
+
+    {% block footer %}
+        {% render_partial 'footer' %}
+    {% endblock %}
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="myMessages" tabindex="-1" role="dialog"
+                 aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title h4" id="myLargeModalLabel">Notification</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{ message }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
+
+        {% endfor %}
+    {% endif %}
+
+    <div class="go-top"><i class='bx bx-chevron-up'></i></div>
+
+
+    {% include 'main/shared/_FooterReferences.html' %}
+
+    {% block page_footer_ref %}
+
+    {% endblock %}
+
+       {% block custome_js_footer %}
+
+    {% endblock %}
+</body>
+</html>

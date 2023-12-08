@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "django_render_partial",
     "solo.apps.SoloAppConfig",
     "users.apps.UsersConfig",
+    "blog.apps.BlogConfig",
+    "main.apps.MainConfig",
 ]
 
 MIDDLEWARE = [

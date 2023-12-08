@@ -1,0 +1,153 @@
+{% load static %}
+
+
+<header class="navbar-light navbar-sticky bg-light">
+    <!-- Logo Nav START -->
+    <nav class="navbar navbar-expand-xl">
+        <div class="container">
+            <!-- Logo START -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img class="light-mode-item navbar-brand-item" src="{% static '' %}images/pages/logo/logo-6.png"
+                     alt="logo">
+                <img class="dark-mode-item navbar-brand-item" src="{% static '' %}images/pages/logo/logo-6.png"
+                     alt="logo">
+            </a>
+            <!-- Logo END -->
+
+            <!-- Responsive navbar toggler -->
+            <button class="navbar-toggler ms-sm-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+            </button>
+
+            <!-- Main navbar START -->
+            <div class="navbar-collapse collapse" id="navbarCollapse">
+
+                <!-- Nav Main menu START -->
+                <ul class="navbar-nav navbar-nav-scroll ms-auto">
+                    {% if request.user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                    {% endif %}
+                    <!-- Nav item 2 Course -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'reviews' %}">Reviews </a>
+                    </li>
+
+                    <!-- Nav item 3 Components -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Services</a>
+                        <ul class="dropdown-menu" aria-labelledby="demoMenu">
+                            {% for course in courses %}
+                                <li><a class="dropdown-item"
+                                       href="{% url 'course_detail' pk=course.pk %}">{{ course.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Nav Main menu END -->
+            </div>
+            <!-- Main navbar END -->
+
+            <!-- Profile and notification START -->
+            <ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
+
+                {% if user.is_authenticated %}
+
+                    {#                    <!-- Notification dropdown START -->#}
+                    {#                    <li class="nav-item ms-0 ms-md-3 dropdown">#}
+                    {#                        <!-- Notification button -->#}
+                    {#                        <a class="btn btn-light btn-round mb-0" href="#" role="button" data-bs-toggle="dropdown"#}
+                    {#                           aria-expanded="false" data-bs-auto-close="outside">#}
+                    {#                            <i class="bi bi-chat fa-fw"></i>#}
+                    {#                        </a>#}
+                    {#                        {% if user.profile.get_user_total_unread_messages > 0 %}#}
+                    {#                            <!-- Notification dote -->#}
+                    {#                            <span class="notif-badge animation-blink"></span>#}
+                    {##}
+                    {#                            <!-- Notification dropdown menu START -->#}
+                    {#                            <div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0">#}
+                    {#                                <div class="card bg-transparent">#}
+                    {#                                    <div class="card-header bg-transparent border-bottom py-4 d-flex justify-content-between align-items-center">#}
+                    {#                                        <a class="m-0 h6" href="{% url 'chat_list' %}">Chat <span#}
+                    {#                                                class="badge bg-danger bg-opacity-10 text-danger ms-2">{{ user.profile.get_user_total_unread_messages }} new</span></a>#}
+                    {#                                    </div>#}
+                    {##}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        {% endif %}#}
+                    {#                        <!-- Notification dropdown menu END -->#}
+                    {#                    </li>#}
+                    {#                    <!-- Notification dropdown END -->#}
+
+                    <!-- Profile dropdown START -->
+                    <li class="nav-item ms-3 dropdown">
+                        <!-- Avatar -->
+                        <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
+                           data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <img class="avatar-img rounded-circle" src="{{ user.profile.get_picture }}"
+                                 alt="avatar">
+                        </a>
+
+                        <!-- Profile dropdown START -->
+                        <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
+                            aria-labelledby="profileDropdown">
+                            <!-- Profile info -->
+                            <li class="px-3 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <!-- Avatar -->
+                                    <div class="avatar me-3">
+                                        <img class="avatar-img rounded-circle shadow"
+                                             src="{{ user.profile.get_picture }}"
+                                             alt="avatar">
+                                    </div>
+                                    <div>
+                                        <a class="h6" href="{% url 'profile' %}">{{ user.profile.full_name }}</a>
+                                        <p class="small m-0">{{ user.email }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Links -->
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}"><i
+                                    class="bi bi-person fa-fw me-2"></i>Dashboard</a></li>
+                            {#                            <li><a class="dropdown-item" href="{% url 'chat_list' %}"><i#}
+                            {#                                    class="bi bi-chat fa-fw me-2"></i>Chat</a></li>#}
+                            <li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'account_logout' %}"><i
+                                    class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+                        </ul>
+                        <!-- Profile dropdown END -->
+                    </li>
+                    <!-- Profile dropdown END -->
+
+                    </ul>
+                    <!-- Profile and notification END -->
+
+                {% else %}
+                    <li class="nav-item">
+
+                        <a class="nav-link " id="login-url" href="{% url 'account_login' %}">Login</a>
+                        <!-- href will be generate by script in base.html page -->
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="btn btn-primary" href="{% url 'account_signup' %}"
+                        >Get started
+                        </a>
+                    </li>
+                {% endif %}
+
+
+        </div>
+    </nav>
+    <!-- Logo Nav END -->
+</header>
