@@ -1,0 +1,170 @@
+{% extends 'main/shared/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+        <!-- Start Page Title Area -->
+        <div class="page-title-area">
+            <div class="container">
+                <div class="page-title-content">
+                    <h2>تماس با ما</h2>
+                    <p>جهت پشتیبانی تماس بگیرید</p>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Title Area -->
+
+        <!-- Start Contact Area -->
+        <section class="contact-area ptb-100">
+            <div class="container">
+                <div class="contact-inner">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="contact-features-list">
+                                <h3>برخی دلایل عالی دیگر برای انتخاب ما</h3>
+                                <p>با استراکس اولین قدم ها را به سمت افزایش بهره وری و کاهش استرس بردارید.</p>
+                                <p>ما یک تیم بسیار ماهر هستیم که به کارآفرینان ، متخصصان و تیم های کوچک کمک می کنیم تا موفقیت را رقم بزنیم - نه فقط در کار بلکه در زندگی. ما با مراقبت از جزئیات كوچك به شما كمك می كنیم تا وقت خود را برای تمرکز بیشتر بر روی هدف بزرگتر صرف كنید.</p>
+
+                                <ul>
+                                    <li><i class='bx bx-badge-check'></i> کارمندان از دفاتر ما در ایران کار می کنند</li>
+                                    <li><i class='bx bx-badge-check'></i> مقیاس بالا / پایین در صورت تقاضا</li>
+                                    <li><i class='bx bx-badge-check'></i> ما همیشه در حال انجام پروژه ها هستیم</li>
+                                    <li><i class='bx bx-badge-check'></i> استخدام بر اساس مجموعه مهارت</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="contact-form">
+                                <h3>بیایید آزمایش رایگان شما را شروع کنیم</h3>
+
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="name" id="name" class="form-control" required data-error="نام خود را بنویسید" placeholder="نام شما">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" class="form-control" required data-error="ایمیل خود را بنویسید" placeholder="ایمیل شما">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="message" class="form-control" id="message" cols="30" rows="6" required data-error="پیام خود را بنویسید" placeholder="پیام شما"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <button type="submit" class="default-btn"><i class='bx bxs-paper-plane'></i>ارسال پیام<span></span></button>
+                                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-info-content">
+                            <h3>با شماره تلفن یا آدرس ایمیل با ما تماس بگیرید</h3>
+                            <h2>
+                                <a href="tel:021-12345678">021-12345678</a>
+                                <span>یا</span>
+                                <a href="mailto:hello@spacle.com">hello@spacle.com</a>
+                            </h2>
+
+                            <ul class="social">
+                                <li><a href="#" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="bx bxl-youtube"></i></a></li>
+                                <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                                <li><a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                                <li><a href="#" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Contact Area -->
+
+        <!-- Start Our Loving Clients Area -->
+        <section class="our-loving-clients ptb-100 bg-f4f5fe">
+            <div class="container">
+                <div class="section-title">
+                    <h2>مشتریان ما</h2>
+                </div>
+
+                <div class="clients-logo-list align-items-center">
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/1.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/2.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/3.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/4.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/5.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/6.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/7.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/8.png" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="single-clients-logo">
+                        <a href="#">
+                            <img src="{% static '' %}img/clients-image/9.png" alt="image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Our Loving Clients Area -->
+
+{% endblock %}
