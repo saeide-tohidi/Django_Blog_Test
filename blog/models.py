@@ -24,8 +24,8 @@ class BlogPost(models.Model):
     header_image = models.ImageField()
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, allow_unicode=True)
-    description = RichTextField()
-    content = RichTextField()
+    description = models.TextField()
+    content = models.TextField()
     publish_at = models.DateTimeField()
     category = models.ForeignKey(
         "blog.BlogCategory", models.SET_NULL, null=True, blank=True, related_name="post"
@@ -37,3 +37,6 @@ class BlogPost(models.Model):
         related_name="blog_posts",
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.title

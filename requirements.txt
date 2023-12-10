@@ -18,10 +18,12 @@ django-render-partial==0.4
 django-solo==2.1.0
 gunicorn==21.2.0
 idna==3.6
+model-bakery==1.17.0
 mypy-extensions==1.0.0
 oauthlib==3.2.2
 packaging==23.2
 pathspec==0.11.2
+Pillow==10.1.0
 platformdirs==4.0.0
 pycparser==2.21
 PyJWT==2.8.0
