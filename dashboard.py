@@ -19,6 +19,13 @@ class CustomIndexDashboard(Dashboard):
                 models=("blog.models.*",),
             )
         )
+        self.children.append(
+            modules.ModelList(
+                title="Main",
+                column=1,
+                models=("main.models.*",),
+            )
+        )
 
         self.children.append(
             modules.ModelList(
