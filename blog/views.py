@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from .models import BlogPost, BlogCategory, BlogTag
 
 
-class BlogList(ListView):
+class BlogList(LoginRequiredMixin, ListView):
     model = BlogPost
     paginate_by = 9
     template_name = "blog/blog_list.html"
