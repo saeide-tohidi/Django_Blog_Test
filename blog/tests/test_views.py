@@ -1,8 +1,5 @@
 from django.test import TestCase, SimpleTestCase, Client
-
-# Create your tests here.
 from django.urls import reverse
-
 from users.models import User
 
 

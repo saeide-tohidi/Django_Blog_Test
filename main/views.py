@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.views import View
 from django.shortcuts import render, redirect
 from .forms import ContactForm
@@ -23,8 +24,11 @@ class Footer(View):
 
 class Home(View):
     def get(self, request):
-        context = {}
-        return render(request, "main/index.html", context)
+        if request.user.is_authenticated:
+            return redirect(reverse("blog_list"))
+        else:
+            context = {}
+            return render(request, "main/index.html", context)
 
 
 def contact_us(request):

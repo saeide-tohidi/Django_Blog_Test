@@ -1,8 +1,31 @@
-from django.test import Client, TestCase
+from django.contrib.auth.models import AnonymousUser
+from django.test import Client, TestCase, RequestFactory
 from django.urls import reverse, resolve
 
 from main.forms import ContactForm
 from main.models import ContactUs
+from main.views import Home
+from users.models import User
+
+
+class TestHomeView(TestCase):
+    def setUp(self) -> None:
+        self.user = User.objects.create_user(
+            email="test@gmail.com", password="testpass"
+        )
+        self.factory = RequestFactory()
+
+    def test_home_user_authenticated(self):
+        request = self.factory.get(reverse("home"))
+        request.user = self.user
+        response = Home.as_view()(request)
+        self.assertEqual(response.status_code, 302)
+
+    def test_home_user_anonymous(self):
+        request = self.factory.get(reverse("home"))
+        request.user = AnonymousUser()
+        response = Home.as_view()(request)
+        self.assertEqual(response.status_code, 200)
 
 
 class TestContactUsView(TestCase):
