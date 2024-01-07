@@ -10,6 +10,7 @@ urlpatterns = [
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("accounts/", include("allauth.urls")),
     path("", include("main.urls")),
+    path("api/", include("main.api.urls")),
     path("blog/", include("blog.urls")),
 ]
 if settings.DEBUG:

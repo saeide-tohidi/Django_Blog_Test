@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "blog.apps.BlogConfig",
     "main.apps.MainConfig",
+    "tracking.apps.TrackingConfig",
 ]
 
 MIDDLEWARE = [
