@@ -1,0 +1,21 @@
+Reminder:
+    - It's better to do this process at night
+
+1. Bring down the dockers
+docker-compose -f devops/sit/docker-compose.yml down -v
+
+
+2. Build the docker image
+docker build -f devops/Dockerfile . -t django-blog
+
+3. Run container on our local port by previous image that maid
+docker run -d --name dj_blog -p 8000:8000 django-blog
+
+
+3. Run Enter active mode
+docker exec -it dj_blog sh
+
+
+3. Stop container
+docker stop dj_blog
+

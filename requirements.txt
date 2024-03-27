@@ -16,6 +16,7 @@ django-js-asset==2.1.0
 django-mptt==0.14.0
 django-render-partial==0.4
 django-solo==2.1.0
+djangorestframework==3.14.0
 gunicorn==21.2.0
 idna==3.6
 model-bakery==1.17.0
@@ -35,3 +36,4 @@ sqlparse==0.4.4
 tomli==2.0.1
 typing_extensions==4.8.0
 urllib3==2.1.0
+psycopg2-binary==2.9.3
