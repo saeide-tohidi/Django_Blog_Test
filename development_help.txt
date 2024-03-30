@@ -1,0 +1,27 @@
+Reminder:
+    - It's better to do this process at night
+
+1. Bring down the dockers
+docker-compose down -v
+
+
+2. Build the docker image
+docker-compose build
+
+
+
+3. Run container on our local port by previous image that maid
+docker-compose up
+docker-compose up -d --build
+
+
+3. Migrating changes:
+docker-compose exec web python manage.py migrate --noinput
+
+
+4. Collect static files in one place:
+docker-compose exec web python manage.py collectstatic --no-input --clear
+
+
+3. Stop container
+docker stop dj_blog
